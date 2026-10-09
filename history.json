@@ -1,0 +1,2262 @@
+[
+ {
+  "scenario": "baseline",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 182,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 185,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.01,
+   "segmentsLoaded": 8
+  },
+  "checks": [
+   {
+    "name": "startup < 3000ms",
+    "pass": true,
+    "detail": "182ms"
+   },
+   {
+    "name": "no stalls",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:46:53.732Z"
+ },
+ {
+  "scenario": "latency-400ms",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 835,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 837,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.01,
+   "segmentsLoaded": 8
+  },
+  "checks": [
+   {
+    "name": "startup < 5000ms",
+    "pass": true,
+    "detail": "835ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:47:02.895Z"
+ },
+ {
+  "scenario": "bandwidth-400kbps",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 4309,
+   "recoveryMs": 2533,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 4,
+   "fatalErrors": 0,
+   "stallTotalMs": 14026,
+   "levelSwitches": [
+    {
+     "tMs": 4300,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.02,
+   "segmentsLoaded": 6
+  },
+  "checks": [
+   {
+    "name": "stalls observed",
+    "pass": true,
+    "detail": "4 stalls / 14026ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferStalledError, mediaError/bufferStalledError, mediaError/bufferStalledError, mediaError/bufferStalledError"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.02s"
+   }
+  ],
+  "created_at": "2026-10-09T05:47:29.413Z"
+ },
+ {
+  "scenario": "segment-503-transient",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 151,
+   "recoveryMs": 1668,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 146,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 12,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "error was injected",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "recovery < 5000ms",
+    "pass": true,
+    "detail": "1668ms"
+   },
+   {
+    "name": "played >= 12s",
+    "pass": true,
+    "detail": "12s"
+   }
+  ],
+  "created_at": "2026-10-09T05:47:41.862Z"
+ },
+ {
+  "scenario": "segment-404-permanent",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError (fatal)"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 157,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 1,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 150,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 1.65,
+   "segmentsLoaded": 3
+  },
+  "checks": [
+   {
+    "name": "failure surfaced as fatal",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError (fatal)"
+   },
+   {
+    "name": "stopped before the gap",
+    "pass": true,
+    "detail": "1.65s"
+   }
+  ],
+  "created_at": "2026-10-09T05:47:43.958Z"
+ },
+ {
+  "scenario": "manifest-503",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/manifestLoadError (fatal)"
+   ],
+   "seekMaxMs": null,
+   "startupMs": null,
+   "recoveryMs": null,
+   "renditions": [],
+   "stallCount": 0,
+   "fatalErrors": 1,
+   "stallTotalMs": 0,
+   "levelSwitches": [],
+   "playedSeconds": 0,
+   "segmentsLoaded": 0
+  },
+  "checks": [
+   {
+    "name": "failure surfaced as fatal",
+    "pass": true,
+    "detail": "networkError/manifestLoadError (fatal)"
+   },
+   {
+    "name": "no first frame",
+    "pass": true,
+    "detail": "null"
+   }
+  ],
+  "created_at": "2026-10-09T05:47:45.774Z"
+ },
+ {
+  "scenario": "seek",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [
+    {
+     "from": 2.86,
+     "target": 22,
+     "landedAt": 22.07,
+     "resumeMs": 14
+    },
+    {
+     "from": 22,
+     "target": 2,
+     "landedAt": 2,
+     "resumeMs": 28
+    },
+    {
+     "from": 2,
+     "target": 14,
+     "landedAt": 14.07,
+     "resumeMs": 14
+    }
+   ],
+   "errors": [
+    "networkError/aborted"
+   ],
+   "seekMaxMs": 28,
+   "startupMs": 158,
+   "recoveryMs": 37,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 155,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 17,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "3 seeks completed",
+    "pass": true,
+    "detail": "[14,28,14]"
+   },
+   {
+    "name": "every seek resumed < 3000ms",
+    "pass": true,
+    "detail": "max 28ms"
+   },
+   {
+    "name": "landed within 2s of target",
+    "pass": true,
+    "detail": "22->22.07, 2->2, 14->14.07"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/aborted"
+   },
+   {
+    "name": "played >= 17s",
+    "pass": true,
+    "detail": "17s"
+   }
+  ],
+  "created_at": "2026-10-09T05:47:52.342Z"
+ },
+ {
+  "scenario": "seek-latency-400ms",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [
+    {
+     "from": 2.86,
+     "target": 22,
+     "landedAt": 22.07,
+     "resumeMs": 412
+    },
+    {
+     "from": 22,
+     "target": 2,
+     "landedAt": 2,
+     "resumeMs": 30
+    },
+    {
+     "from": 2,
+     "target": 14,
+     "landedAt": 14.07,
+     "resumeMs": 414
+    }
+   ],
+   "errors": [
+    "networkError/aborted"
+   ],
+   "seekMaxMs": 414,
+   "startupMs": 837,
+   "recoveryMs": 438,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 835,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 17,
+   "segmentsLoaded": 13
+  },
+  "checks": [
+   {
+    "name": "3 seeks completed",
+    "pass": true,
+    "detail": "[412,30,414]"
+   },
+   {
+    "name": "every seek resumed < 5000ms",
+    "pass": true,
+    "detail": "max 414ms"
+   },
+   {
+    "name": "landed within 2s of target",
+    "pass": true,
+    "detail": "22->22.07, 2->2, 14->14.07"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/aborted"
+   },
+   {
+    "name": "played >= 17s",
+    "pass": true,
+    "detail": "17s"
+   }
+  ],
+  "created_at": "2026-10-09T05:48:00.374Z"
+ },
+ {
+  "scenario": "abr-clean",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 151,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 142,
+     "level": 0
+    },
+    {
+     "tMs": 2224,
+     "level": 2
+    }
+   ],
+   "playedSeconds": 12,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "3 renditions in ladder",
+    "pass": true,
+    "detail": "180p@345k 360p@950k 540p@1830k"
+   },
+   {
+    "name": "reached top rendition",
+    "pass": true,
+    "detail": "peak 2 of 2"
+   },
+   {
+    "name": "startup < 3000ms",
+    "pass": true,
+    "detail": "151ms"
+   },
+   {
+    "name": "no stalls",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   }
+  ],
+  "created_at": "2026-10-09T05:48:12.825Z"
+ },
+ {
+  "scenario": "abr-throttled-600kbps",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 1149,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 1147,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 12,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "never picked top rendition",
+    "pass": true,
+    "detail": "levels 0"
+   },
+   {
+    "name": "at most 1 stall",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "startup < 6000ms",
+    "pass": true,
+    "detail": "1149ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 12s",
+    "pass": true,
+    "detail": "12s"
+   }
+  ],
+  "created_at": "2026-10-09T05:48:26.312Z"
+ },
+ {
+  "scenario": "abr-bandwidth-drop",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferStalledError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 149,
+   "recoveryMs": 1013,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 1,
+   "fatalErrors": 0,
+   "stallTotalMs": 1095,
+   "levelSwitches": [
+    {
+     "tMs": 148,
+     "level": 0
+    },
+    {
+     "tMs": 2230,
+     "level": 2
+    },
+    {
+     "tMs": 15263,
+     "level": 1
+    },
+    {
+     "tMs": 17330,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 24,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "climbed before the drop",
+    "pass": true,
+    "detail": "[{\"tMs\":148,\"level\":0},{\"tMs\":2230,\"level\":2},{\"tMs\":15263,\"level\":1},{\"tMs\":17330,\"level\":0}]"
+   },
+   {
+    "name": "stepped down after the drop",
+    "pass": true,
+    "detail": "11263ms after drop -> level 1"
+   },
+   {
+    "name": "stalled under 3s total",
+    "pass": true,
+    "detail": "1 stalls / 1095ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferStalledError"
+   },
+   {
+    "name": "played >= 24s",
+    "pass": true,
+    "detail": "24s"
+   }
+  ],
+  "created_at": "2026-10-09T05:48:51.877Z"
+ },
+ {
+  "scenario": "connection-loss-12s",
+  "build": "b60a9e6e98c86a96c87f567084803effcaba2b89",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "mediaError/bufferStalledError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 161,
+   "recoveryMs": 12076,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 1,
+   "fatalErrors": 0,
+   "stallTotalMs": 4390,
+   "levelSwitches": [
+    {
+     "tMs": 155,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 20.01,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "outage caused errors",
+    "pass": true,
+    "detail": "12 errors"
+   },
+   {
+    "name": "stalled while offline",
+    "pass": true,
+    "detail": "1 stalls / 4390ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, mediaError/bufferStalledError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "resumed after network returned",
+    "pass": true,
+    "detail": "12076ms from first error"
+   },
+   {
+    "name": "played >= 20s",
+    "pass": true,
+    "detail": "20.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:49:16.708Z"
+ },
+ {
+  "scenario": "baseline",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 255,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 252,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.02,
+   "segmentsLoaded": 8
+  },
+  "checks": [
+   {
+    "name": "startup < 3000ms",
+    "pass": true,
+    "detail": "255ms"
+   },
+   {
+    "name": "no stalls",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.02s"
+   }
+  ],
+  "created_at": "2026-10-09T05:51:06.627Z"
+ },
+ {
+  "scenario": "latency-400ms",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 865,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 855,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.01,
+   "segmentsLoaded": 8
+  },
+  "checks": [
+   {
+    "name": "startup < 5000ms",
+    "pass": true,
+    "detail": "865ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:51:15.900Z"
+ },
+ {
+  "scenario": "bandwidth-400kbps",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 4320,
+   "recoveryMs": 2558,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 4,
+   "fatalErrors": 0,
+   "stallTotalMs": 14041,
+   "levelSwitches": [
+    {
+     "tMs": 4319,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.01,
+   "segmentsLoaded": 6
+  },
+  "checks": [
+   {
+    "name": "stalls observed",
+    "pass": true,
+    "detail": "4 stalls / 14041ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferStalledError, mediaError/bufferStalledError, mediaError/bufferStalledError, mediaError/bufferStalledError"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:51:42.634Z"
+ },
+ {
+  "scenario": "segment-503-transient",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 182,
+   "recoveryMs": 1657,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 178,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 12,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "error was injected",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "recovery < 5000ms",
+    "pass": true,
+    "detail": "1657ms"
+   },
+   {
+    "name": "played >= 12s",
+    "pass": true,
+    "detail": "12s"
+   }
+  ],
+  "created_at": "2026-10-09T05:51:55.232Z"
+ },
+ {
+  "scenario": "segment-404-permanent",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError (fatal)"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 188,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 1,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 179,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 1.64,
+   "segmentsLoaded": 3
+  },
+  "checks": [
+   {
+    "name": "failure surfaced as fatal",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError (fatal)"
+   },
+   {
+    "name": "stopped before the gap",
+    "pass": true,
+    "detail": "1.64s"
+   }
+  ],
+  "created_at": "2026-10-09T05:51:57.444Z"
+ },
+ {
+  "scenario": "manifest-503",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/manifestLoadError (fatal)"
+   ],
+   "seekMaxMs": null,
+   "startupMs": null,
+   "recoveryMs": null,
+   "renditions": [],
+   "stallCount": 0,
+   "fatalErrors": 1,
+   "stallTotalMs": 0,
+   "levelSwitches": [],
+   "playedSeconds": 0,
+   "segmentsLoaded": 0
+  },
+  "checks": [
+   {
+    "name": "failure surfaced as fatal",
+    "pass": true,
+    "detail": "networkError/manifestLoadError (fatal)"
+   },
+   {
+    "name": "no first frame",
+    "pass": true,
+    "detail": "null"
+   }
+  ],
+  "created_at": "2026-10-09T05:51:59.377Z"
+ },
+ {
+  "scenario": "seek",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [
+    {
+     "from": 2.86,
+     "target": 22,
+     "landedAt": 22.1,
+     "resumeMs": 145
+    },
+    {
+     "from": 22.01,
+     "target": 2,
+     "landedAt": 2,
+     "resumeMs": 29
+    },
+    {
+     "from": 2,
+     "target": 14,
+     "landedAt": 14.07,
+     "resumeMs": 29
+    }
+   ],
+   "errors": [],
+   "seekMaxMs": 145,
+   "startupMs": 169,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 169,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 17,
+   "segmentsLoaded": 16
+  },
+  "checks": [
+   {
+    "name": "3 seeks completed",
+    "pass": true,
+    "detail": "[145,29,29]"
+   },
+   {
+    "name": "every seek resumed < 3000ms",
+    "pass": true,
+    "detail": "max 145ms"
+   },
+   {
+    "name": "landed within 2s of target",
+    "pass": true,
+    "detail": "22->22.1, 2->2, 14->14.07"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 17s",
+    "pass": true,
+    "detail": "17s"
+   }
+  ],
+  "created_at": "2026-10-09T05:52:06.210Z"
+ },
+ {
+  "scenario": "seek-latency-400ms",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [
+    {
+     "from": 2.86,
+     "target": 22,
+     "landedAt": 22.1,
+     "resumeMs": 546
+    },
+    {
+     "from": 22,
+     "target": 2,
+     "landedAt": 2,
+     "resumeMs": 29
+    },
+    {
+     "from": 2,
+     "target": 14,
+     "landedAt": 14.07,
+     "resumeMs": 413
+    }
+   ],
+   "errors": [
+    "networkError/aborted"
+   ],
+   "seekMaxMs": 546,
+   "startupMs": 850,
+   "recoveryMs": 437,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 853,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 17.01,
+   "segmentsLoaded": 13
+  },
+  "checks": [
+   {
+    "name": "3 seeks completed",
+    "pass": true,
+    "detail": "[546,29,413]"
+   },
+   {
+    "name": "every seek resumed < 5000ms",
+    "pass": true,
+    "detail": "max 546ms"
+   },
+   {
+    "name": "landed within 2s of target",
+    "pass": true,
+    "detail": "22->22.1, 2->2, 14->14.07"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/aborted"
+   },
+   {
+    "name": "played >= 17s",
+    "pass": true,
+    "detail": "17.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:52:14.493Z"
+ },
+ {
+  "scenario": "abr-clean",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 97,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 92,
+     "level": 0
+    },
+    {
+     "tMs": 2148,
+     "level": 2
+    }
+   ],
+   "playedSeconds": 12,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "3 renditions in ladder",
+    "pass": true,
+    "detail": "180p@345k 360p@950k 540p@1830k"
+   },
+   {
+    "name": "reached top rendition",
+    "pass": true,
+    "detail": "peak 2 of 2"
+   },
+   {
+    "name": "startup < 3000ms",
+    "pass": true,
+    "detail": "97ms"
+   },
+   {
+    "name": "no stalls",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   }
+  ],
+  "created_at": "2026-10-09T05:52:26.983Z"
+ },
+ {
+  "scenario": "abr-throttled-600kbps",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 1171,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 1162,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 12.01,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "never picked top rendition",
+    "pass": true,
+    "detail": "levels 0"
+   },
+   {
+    "name": "at most 1 stall",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "startup < 6000ms",
+    "pass": true,
+    "detail": "1171ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 12s",
+    "pass": true,
+    "detail": "12.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:52:40.548Z"
+ },
+ {
+  "scenario": "abr-bandwidth-drop",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferStalledError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 98,
+   "recoveryMs": 945,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 1,
+   "fatalErrors": 0,
+   "stallTotalMs": 996,
+   "levelSwitches": [
+    {
+     "tMs": 95,
+     "level": 0
+    },
+    {
+     "tMs": 2155,
+     "level": 2
+    },
+    {
+     "tMs": 15110,
+     "level": 1
+    },
+    {
+     "tMs": 17245,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 24,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "climbed before the drop",
+    "pass": true,
+    "detail": "[{\"tMs\":95,\"level\":0},{\"tMs\":2155,\"level\":2},{\"tMs\":15110,\"level\":1},{\"tMs\":17245,\"level\":0}]"
+   },
+   {
+    "name": "stepped down after the drop",
+    "pass": true,
+    "detail": "11110ms after drop -> level 1"
+   },
+   {
+    "name": "stalled under 3s total",
+    "pass": true,
+    "detail": "1 stalls / 996ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferStalledError"
+   },
+   {
+    "name": "played >= 24s",
+    "pass": true,
+    "detail": "24s"
+   }
+  ],
+  "created_at": "2026-10-09T05:53:06.013Z"
+ },
+ {
+  "scenario": "connection-loss-12s",
+  "build": "288c3625b8f9f2ff35aa3eeb0a9aafd938d28ca0",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "mediaError/bufferStalledError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 153,
+   "recoveryMs": 12093,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 1,
+   "fatalErrors": 0,
+   "stallTotalMs": 4183,
+   "levelSwitches": [
+    {
+     "tMs": 149,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 20,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "outage caused errors",
+    "pass": true,
+    "detail": "12 errors"
+   },
+   {
+    "name": "stalled while offline",
+    "pass": true,
+    "detail": "1 stalls / 4183ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, mediaError/bufferStalledError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "resumed after network returned",
+    "pass": true,
+    "detail": "12093ms from first error"
+   },
+   {
+    "name": "played >= 20s",
+    "pass": true,
+    "detail": "20s"
+   }
+  ],
+  "created_at": "2026-10-09T05:53:30.762Z"
+ },
+ {
+  "scenario": "baseline",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferSeekOverHole"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 373,
+   "recoveryMs": 107,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 364,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.01,
+   "segmentsLoaded": 8
+  },
+  "checks": [
+   {
+    "name": "startup < 3000ms",
+    "pass": true,
+    "detail": "373ms"
+   },
+   {
+    "name": "no stalls",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferSeekOverHole"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:55:47.324Z"
+ },
+ {
+  "scenario": "latency-400ms",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 855,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 843,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.01,
+   "segmentsLoaded": 8
+  },
+  "checks": [
+   {
+    "name": "startup < 5000ms",
+    "pass": true,
+    "detail": "855ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:55:56.653Z"
+ },
+ {
+  "scenario": "bandwidth-400kbps",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError",
+    "mediaError/bufferStalledError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 4321,
+   "recoveryMs": 2560,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 4,
+   "fatalErrors": 0,
+   "stallTotalMs": 14067,
+   "levelSwitches": [
+    {
+     "tMs": 4324,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 8.02,
+   "segmentsLoaded": 6
+  },
+  "checks": [
+   {
+    "name": "stalls observed",
+    "pass": true,
+    "detail": "4 stalls / 14067ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferStalledError, mediaError/bufferStalledError, mediaError/bufferStalledError, mediaError/bufferStalledError"
+   },
+   {
+    "name": "played >= 8s",
+    "pass": true,
+    "detail": "8.02s"
+   }
+  ],
+  "created_at": "2026-10-09T05:56:23.320Z"
+ },
+ {
+  "scenario": "segment-503-transient",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 158,
+   "recoveryMs": 1661,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 155,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 12,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "error was injected",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "recovery < 5000ms",
+    "pass": true,
+    "detail": "1661ms"
+   },
+   {
+    "name": "played >= 12s",
+    "pass": true,
+    "detail": "12s"
+   }
+  ],
+  "created_at": "2026-10-09T05:56:35.803Z"
+ },
+ {
+  "scenario": "segment-404-permanent",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError (fatal)"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 150,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 1,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 145,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 1.65,
+   "segmentsLoaded": 3
+  },
+  "checks": [
+   {
+    "name": "failure surfaced as fatal",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError (fatal)"
+   },
+   {
+    "name": "stopped before the gap",
+    "pass": true,
+    "detail": "1.65s"
+   }
+  ],
+  "created_at": "2026-10-09T05:56:37.964Z"
+ },
+ {
+  "scenario": "manifest-503",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/manifestLoadError (fatal)"
+   ],
+   "seekMaxMs": null,
+   "startupMs": null,
+   "recoveryMs": null,
+   "renditions": [],
+   "stallCount": 0,
+   "fatalErrors": 1,
+   "stallTotalMs": 0,
+   "levelSwitches": [],
+   "playedSeconds": 0,
+   "segmentsLoaded": 0
+  },
+  "checks": [
+   {
+    "name": "failure surfaced as fatal",
+    "pass": true,
+    "detail": "networkError/manifestLoadError (fatal)"
+   },
+   {
+    "name": "no first frame",
+    "pass": true,
+    "detail": "null"
+   }
+  ],
+  "created_at": "2026-10-09T05:56:39.831Z"
+ },
+ {
+  "scenario": "seek",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [
+    {
+     "from": 2.87,
+     "target": 22,
+     "landedAt": 22.07,
+     "resumeMs": 13
+    },
+    {
+     "from": 22,
+     "target": 2,
+     "landedAt": 2,
+     "resumeMs": 27
+    },
+    {
+     "from": 2,
+     "target": 14,
+     "landedAt": 14.07,
+     "resumeMs": 13
+    }
+   ],
+   "errors": [],
+   "seekMaxMs": 27,
+   "startupMs": 172,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 159,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 17.01,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "3 seeks completed",
+    "pass": true,
+    "detail": "[13,27,13]"
+   },
+   {
+    "name": "every seek resumed < 3000ms",
+    "pass": true,
+    "detail": "max 27ms"
+   },
+   {
+    "name": "landed within 2s of target",
+    "pass": true,
+    "detail": "22->22.07, 2->2, 14->14.07"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 17s",
+    "pass": true,
+    "detail": "17.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:56:46.448Z"
+ },
+ {
+  "scenario": "seek-latency-400ms",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [
+    {
+     "from": 2.87,
+     "target": 22,
+     "landedAt": 22.07,
+     "resumeMs": 412
+    },
+    {
+     "from": 22,
+     "target": 2,
+     "landedAt": 2,
+     "resumeMs": 29
+    },
+    {
+     "from": 2,
+     "target": 14,
+     "landedAt": 14.07,
+     "resumeMs": 413
+    }
+   ],
+   "errors": [
+    "networkError/aborted"
+   ],
+   "seekMaxMs": 413,
+   "startupMs": 842,
+   "recoveryMs": 438,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 844,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 17,
+   "segmentsLoaded": 13
+  },
+  "checks": [
+   {
+    "name": "3 seeks completed",
+    "pass": true,
+    "detail": "[412,29,413]"
+   },
+   {
+    "name": "every seek resumed < 5000ms",
+    "pass": true,
+    "detail": "max 413ms"
+   },
+   {
+    "name": "landed within 2s of target",
+    "pass": true,
+    "detail": "22->22.07, 2->2, 14->14.07"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/aborted"
+   },
+   {
+    "name": "played >= 17s",
+    "pass": true,
+    "detail": "17s"
+   }
+  ],
+  "created_at": "2026-10-09T05:56:54.530Z"
+ },
+ {
+  "scenario": "abr-clean",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 69,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 69,
+     "level": 0
+    },
+    {
+     "tMs": 2128,
+     "level": 2
+    }
+   ],
+   "playedSeconds": 12.01,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "3 renditions in ladder",
+    "pass": true,
+    "detail": "180p@345k 360p@950k 540p@1830k"
+   },
+   {
+    "name": "reached top rendition",
+    "pass": true,
+    "detail": "peak 2 of 2"
+   },
+   {
+    "name": "startup < 3000ms",
+    "pass": true,
+    "detail": "69ms"
+   },
+   {
+    "name": "no stalls",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   }
+  ],
+  "created_at": "2026-10-09T05:57:06.988Z"
+ },
+ {
+  "scenario": "abr-throttled-600kbps",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [],
+   "seekMaxMs": null,
+   "startupMs": 1154,
+   "recoveryMs": null,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 0,
+   "fatalErrors": 0,
+   "stallTotalMs": 0,
+   "levelSwitches": [
+    {
+     "tMs": 1156,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 12.01,
+   "segmentsLoaded": 10
+  },
+  "checks": [
+   {
+    "name": "never picked top rendition",
+    "pass": true,
+    "detail": "levels 0"
+   },
+   {
+    "name": "at most 1 stall",
+    "pass": true,
+    "detail": "0 stalls / 0ms"
+   },
+   {
+    "name": "startup < 6000ms",
+    "pass": true,
+    "detail": "1154ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "none"
+   },
+   {
+    "name": "played >= 12s",
+    "pass": true,
+    "detail": "12.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:57:20.484Z"
+ },
+ {
+  "scenario": "abr-bandwidth-drop",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "mediaError/bufferStalledError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 152,
+   "recoveryMs": 955,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 180,
+     "bitrate": 345400
+    },
+    {
+     "level": 1,
+     "height": 360,
+     "bitrate": 950400
+    },
+    {
+     "level": 2,
+     "height": 540,
+     "bitrate": 1830400
+    }
+   ],
+   "stallCount": 1,
+   "fatalErrors": 0,
+   "stallTotalMs": 1047,
+   "levelSwitches": [
+    {
+     "tMs": 151,
+     "level": 0
+    },
+    {
+     "tMs": 2231,
+     "level": 2
+    },
+    {
+     "tMs": 15218,
+     "level": 1
+    },
+    {
+     "tMs": 17330,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 24,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "climbed before the drop",
+    "pass": true,
+    "detail": "[{\"tMs\":151,\"level\":0},{\"tMs\":2231,\"level\":2},{\"tMs\":15218,\"level\":1},{\"tMs\":17330,\"level\":0}]"
+   },
+   {
+    "name": "stepped down after the drop",
+    "pass": true,
+    "detail": "11218ms after drop -> level 1"
+   },
+   {
+    "name": "stalled under 3s total",
+    "pass": true,
+    "detail": "1 stalls / 1047ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "mediaError/bufferStalledError"
+   },
+   {
+    "name": "played >= 24s",
+    "pass": true,
+    "detail": "24s"
+   }
+  ],
+  "created_at": "2026-10-09T05:57:46.016Z"
+ },
+ {
+  "scenario": "connection-loss-12s",
+  "build": "8dc759007e8e3bbf0a540b187aada11e49d5dbda",
+  "status": "pass",
+  "metrics": {
+   "ended": false,
+   "seeks": [],
+   "errors": [
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "mediaError/bufferStalledError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError",
+    "networkError/fragLoadError"
+   ],
+   "seekMaxMs": null,
+   "startupMs": 168,
+   "recoveryMs": 12076,
+   "renditions": [
+    {
+     "level": 0,
+     "height": 0,
+     "bitrate": 0
+    }
+   ],
+   "stallCount": 1,
+   "fatalErrors": 0,
+   "stallTotalMs": 4186,
+   "levelSwitches": [
+    {
+     "tMs": 165,
+     "level": 0
+    }
+   ],
+   "playedSeconds": 20.01,
+   "segmentsLoaded": 14
+  },
+  "checks": [
+   {
+    "name": "outage caused errors",
+    "pass": true,
+    "detail": "12 errors"
+   },
+   {
+    "name": "stalled while offline",
+    "pass": true,
+    "detail": "1 stalls / 4186ms"
+   },
+   {
+    "name": "no fatal errors",
+    "pass": true,
+    "detail": "networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError, mediaError/bufferStalledError, networkError/fragLoadError, networkError/fragLoadError, networkError/fragLoadError"
+   },
+   {
+    "name": "resumed after network returned",
+    "pass": true,
+    "detail": "12076ms from first error"
+   },
+   {
+    "name": "played >= 20s",
+    "pass": true,
+    "detail": "20.01s"
+   }
+  ],
+  "created_at": "2026-10-09T05:58:10.715Z"
+ }
+]
