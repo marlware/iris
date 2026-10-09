@@ -39,7 +39,7 @@ declare global {
 }
 
 /** Attach hls.js to a <video> and record playback QoE metrics. */
-export function instrument(video: HTMLVideoElement, src: string): () => void {
+export function instrument(video: HTMLVideoElement, src: string, opts: { retries?: number; retryDelayMs?: number } = {}): () => void {
   const m: PlaybackMetrics = {
     startupMs: null, stallCount: 0, stallTotalMs: 0, fatalErrors: 0, recoveryMs: null,
     errors: [], segmentsLoaded: 0, playedSeconds: 0, ended: false, seeks: [], seekMaxMs: null, renditions: [], levelSwitches: [],
@@ -93,7 +93,7 @@ export function instrument(video: HTMLVideoElement, src: string): () => void {
   video.addEventListener("ended", () => (m.ended = true));
 
   // Stock hls.js retries for over a minute, which is too slow for a test run.
-  const retry = { maxNumRetry: 2, retryDelayMs: 500, maxRetryDelayMs: 2000 };
+  const retry = { maxNumRetry: opts.retries ?? 2, retryDelayMs: opts.retryDelayMs ?? 500, maxRetryDelayMs: opts.retryDelayMs ?? 2000 };
   const policy = { default: { maxTimeToFirstByteMs: 8000, maxLoadTimeMs: 20000, timeoutRetry: retry, errorRetry: retry } };
   // Small forward buffer so adaptation decisions happen during playback instead of everything prefetching up front.
   const hls = new Hls({ maxBufferLength: 8, maxMaxBufferLength: 8, fragLoadPolicy: policy, manifestLoadPolicy: policy, playlistLoadPolicy: policy });

@@ -11,24 +11,28 @@ import path from "node:path";
 //   delay=400                    add 400ms to every response
 //   bw=300                       cap throughput at 300 kbps
 //   drop=6000:300                after 6s (from the token's first request) cap at 300 kbps
+//   outage=4000:12000            between 4s and 16s, drop every connection (like a lost network)
 //   fail=seg_003.ts:503          always answer 503 for that file
 //   fail=seg_003.ts:503:2        answer 503 for the first 2 requests, then serve normally
 //
 // token scopes the "first N requests" counters, so each test run passes a fresh one.
 
 interface Rule { file: string; status: number; times: number }
-interface Spec { delayMs: number; bwKbps: number; drop: { afterMs: number; kbps: number } | null; rules: Rule[] }
+interface Spec { delayMs: number; bwKbps: number; drop: { afterMs: number; kbps: number } | null; outage: { startMs: number; lenMs: number } | null; rules: Rule[] }
 
 const hits = new Map<string, number>();
 const starts = new Map<string, number>();
 
 export function parseSpec(raw: string): Spec {
-  const spec: Spec = { delayMs: 0, bwKbps: 0, drop: null, rules: [] };
+  const spec: Spec = { delayMs: 0, bwKbps: 0, drop: null, outage: null, rules: [] };
   for (const part of raw.split(",")) {
     const [key, val = ""] = part.split("=");
     if (key === "delay") spec.delayMs = Number(val);
     else if (key === "bw") spec.bwKbps = Number(val);
-    else if (key === "drop") {
+    else if (key === "outage") {
+      const [startMs, lenMs] = val.split(":");
+      spec.outage = { startMs: Number(startMs), lenMs: Number(lenMs) };
+    } else if (key === "drop") {
       const [afterMs, kbps] = val.split(":");
       spec.drop = { afterMs: Number(afterMs), kbps: Number(kbps) };
     } else if (key === "fail") {
@@ -58,6 +62,9 @@ export function chaos(root: string) {
 
     if (!starts.has(req.params.token)) starts.set(req.params.token, Date.now());
     const elapsed = Date.now() - starts.get(req.params.token)!;
+    if (spec.outage && elapsed >= spec.outage.startMs && elapsed < spec.outage.startMs + spec.outage.lenMs) {
+      return void req.socket.destroy();
+    }
     const bwKbps = spec.drop && elapsed >= spec.drop.afterMs ? spec.drop.kbps : spec.bwKbps;
 
     const name = path.basename(file);

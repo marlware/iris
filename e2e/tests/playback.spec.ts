@@ -23,11 +23,11 @@ async function report(request: APIRequestContext, scenario: string, metrics: Pla
 const snapshot = (page: Page) => page.evaluate(() => window.__iris!.snapshot()) as Promise<PlaybackMetrics>;
 
 /** Load the player through the fault proxy with the given spec. */
-async function open(page: Page, spec: string, stream = "basic/index.m3u8") {
+async function open(page: Page, spec: string, stream = "basic/index.m3u8", playerQuery = "") {
   const token = randomUUID();
   // IRIS_EXTRA_SPEC fakes a slower build, e.g. IRIS_EXTRA_SPEC=delay=1500
   const full = [spec, process.env.IRIS_EXTRA_SPEC].filter(Boolean).join(",");
-  await page.goto(`/player?src=/chaos/${encodeURIComponent(full)}/${token}/${stream}`);
+  await page.goto(`/player?src=/chaos/${encodeURIComponent(full)}/${token}/${stream}${playerQuery}`);
 }
 
 /** Wait for N seconds of playback or a fatal error, whichever comes first. */
@@ -194,5 +194,18 @@ test("abr: bandwidth drops to 500kbps at 4s, player steps down", async ({ page, 
     { name: "stalled under 3s total", pass: m.stallTotalMs < 3000, detail: `${m.stallCount} stalls / ${m.stallTotalMs}ms` },
     noFatal(m),
     played(m, 24),
+  ]);
+});
+
+test("connection loss: network down from 4s to 16s, then back", async ({ page, request }) => {
+  // Patient retries (15 x 1s), like a player on a phone that expects networks to come and go.
+  await open(page, "outage=4000:12000", "basic/index.m3u8", "&retries=15&retryDelay=1000");
+  const m = await settle(page, 20, 70_000);
+  await report(request, "connection-loss-12s", m, [
+    { name: "outage caused errors", pass: m.errors.length > 0, detail: `${m.errors.length} errors` },
+    { name: "stalled while offline", pass: m.stallCount >= 1, detail: `${m.stallCount} stalls / ${m.stallTotalMs}ms` },
+    noFatal(m),
+    { name: "resumed after network returned", pass: m.recoveryMs !== null, detail: `${m.recoveryMs}ms from first error` },
+    played(m, 20),
   ]);
 });
