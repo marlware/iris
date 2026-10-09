@@ -21,6 +21,8 @@ jobs:
   playback:
     runs-on: ubuntu-latest
     needs: unit
+    permissions:
+      contents: write # to publish run history to the iris-results branch
     services:
       postgres:
         image: postgres:16
@@ -48,10 +50,25 @@ jobs:
       - run: npm run fixture
       # Real Chrome, not bundled Chromium: the test stream is H.264.
       - run: npx playwright install chrome
+      # Run history lives on the iris-results branch, so each build can be compared with earlier ones.
+      - name: Load run history
+        run: |
+          git fetch --depth=1 origin iris-results             && git show FETCH_HEAD:history.json > history.json             || echo "[]" > history.json
+          npm run history -w server -- import ../history.json
       - run: npm run test:e2e
-      - name: Dump run results
+      - name: Regression report
         if: always()
-        run: curl -s localhost:3001/api/runs || true
+        run: npm run --silent history -w server -- report | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Save run history
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          npm run history -w server -- export "$RUNNER_TEMP/history.json"
+          cd "$(mktemp -d)"
+          git init -q -b iris-results
+          cp "$RUNNER_TEMP/history.json" history.json
+          git add history.json
+          git -c user.name=iris-ci -c user.email=iris-ci@users.noreply.github.com commit -qm "run history at ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" iris-results
       - uses: actions/upload-artifact@v4
         if: always()
         with:
