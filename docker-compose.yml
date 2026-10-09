@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: iris
+      POSTGRES_PASSWORD: iris
+      POSTGRES_DB: iris
+    ports:
+      - "5433:5432"
+    volumes:
+      - iris-pg:/var/lib/postgresql/data
+volumes:
+  iris-pg:

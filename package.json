@@ -1,0 +1,19 @@
+{
+  "name": "iris",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["server", "web", "e2e"],
+  "scripts": {
+    "fixture": "node scripts/make-fixture.mjs",
+    "db:up": "docker compose up -d db",
+    "dev:server": "npm run dev -w server",
+    "dev:web": "npm run dev -w web",
+    "test:e2e": "npm run test -w e2e",
+    "test:unit": "npm test -w server",
+    "typecheck": "tsc --noEmit -p server && tsc --noEmit -p web && tsc --noEmit -p e2e"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "typescript": "^5.6.0"
+  }
+}
