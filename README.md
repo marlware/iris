@@ -83,12 +83,16 @@ Needs Docker and Google Chrome (Playwright's bundled Chromium has no H.264). Uni
 ## CI
 
 `.github/workflows/ci.yml` runs typecheck and unit tests, then the full Playwright suite against a Postgres service
-container. The build id is the commit SHA and the HTML report is uploaded as an artifact. Each CI run starts with an
-empty database, so regression comparison currently only works against a local database.
+container. The build id is the commit SHA and the HTML report is uploaded as an artifact.
+
+CI starts with an empty database, so run history is kept on an `iris-results` branch (a single `history.json`,
+force-pushed after each run on `main`). Before the tests, CI imports that file into Postgres. After them, it writes a
+regression report to the job summary and exports the updated history. The comparison is report-only for now.
+`npm run history -w server -- <import|export|report>` does the same thing locally.
 
 ## Layout
 
-- `server/`: Express + pg REST API, fault-injecting stream server (`chaos.ts`), regression logic
+- `server/`: Express + pg REST API, fault-injecting stream server (`chaos.ts`), regression logic, history import/export
 - `web/`: React + Vite; results dashboard at `/`, instrumented player harness at `/player`
 - `e2e/`: Playwright scenarios
 - `scripts/make-fixture.mjs`: builds the HLS fixtures
